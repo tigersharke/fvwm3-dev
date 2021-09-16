@@ -24,7 +24,7 @@ USE_GL=		gl glu
 USE_XORG=       ice x11 xext xrandr xrender xt
 USE_LDCONFIG=	yes
 
-#CONFLICTS_INSTALL=      fvwm-2.* fvwm3
+CONFLICTS_INSTALL=      fvwm-2.* fvwm3
 
 CPE_VENDOR=     fvwm
 CPE_PRODUCT=    fvwm
