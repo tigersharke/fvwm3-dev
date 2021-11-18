@@ -48,6 +48,10 @@ libexec/fvwm3/1.0.5/FvwmTalk
 %%MANPAGES%%man/man1/fvwm-perllib.1.gz
 %%MANPAGES%%man/man1/fvwm-root.1.gz
 %%MANPAGES%%man/man1/fvwm3.1.gz
+%%MANPAGES%%man/man1/fvwm3all.1.gz
+%%MANPAGES%%man/man1/fvwm3commands.1.gz
+%%MANPAGES%%man/man1/fvwm3menus.1.gz
+%%MANPAGES%%man/man1/fvwm3styles.1.gz
 %%DATADIR%%/ConfigFvwmBacker
 %%DATADIR%%/ConfigFvwmButtons
 %%DATADIR%%/ConfigFvwmDefaults
