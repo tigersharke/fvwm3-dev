@@ -1,5 +1,5 @@
 PORTNAME=	fvwm3
-DISTVERSION=	g20220306
+DISTVERSION=	g20220407
 CATEGORIES=	x11-wm
 PKGNAMESUFFIX=  -dev
 DISTNAME=	${PORTNAME}-${GH_TAGNAME}
@@ -11,17 +11,19 @@ COMMENT=        F? Virtual Window Manager
 LICENSE=        GPLv2
 
 LIB_DEPENDS=    libbson-1.0.so:devel/libbson \
-		libevent.so:devel/libevent
+		libevent.so:devel/libevent \
+		libfreetype.so:print/freetype2 \
+		libfontconfig.so:x11-fonts/fontconfig
 
 USES=		autoreconf compiler:c11 cpe pkgconfig python:3.7+ readline xorg gl
 
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	fvwmorg
 GH_PROJECT=	fvwm3
-GH_TAGNAME=	91ef704ff86a397fbb0427d9046ae445f699e886
+GH_TAGNAME=	7ef3408fe3adeda889fe23fc899f4495f7abf1e4
 
 USE_GL=		gl glu
-USE_XORG=       ice x11 xext xrandr xrender xt
+USE_XORG=       ice x11 xext xrandr xrender xt xft
 USE_LDCONFIG=	yes
 
 CONFLICTS_INSTALL=      fvwm-2.* fvwm3
@@ -36,8 +38,8 @@ CONFIGURE_ARGS= ac_cv_path_PYTHON=${PYTHON_CMD} \
 WRKSRC=		${WRKDIR}/fvwm3-${GH_TAGNAME}
 
 OPTIONS_DEFINE= FRIBIDI ICONV MANPAGES NCURSES NLS PERL PNG SHARUTILS SVG \
-		XCURSOR XFT XI XPM XSM
-OPTIONS_DEFAULT=FRIBIDI ICONV MANPAGES PERL PNG XCURSOR XFT XSM
+		XCURSOR XI XPM XSM
+OPTIONS_DEFAULT=FRIBIDI ICONV MANPAGES PERL PNG XCURSOR XSM
 OPTIONS_SUB=	yes
 
 OPTIONS_RADIO=          CLI
@@ -86,10 +88,7 @@ SVG_CONFIGURE_ENABLE=   rsvg
 XCURSOR_USE=	xorg=xcursor
 XCURSOR_CONFIGURE_ENABLE=	xcursor
 
-XFT_LIB_DEPENDS=	libfreetype.so:print/freetype2 \
-			libfontconfig.so:x11-fonts/fontconfig
-XFT_USE=        xorg=xft
-XFT_CONFIGURE_ENABLE=   xft
+# libxft recently made a core dependency
 
 XI_DESC=	X Input extension library support
 XI_USE=		xorg=xi xext
