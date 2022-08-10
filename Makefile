@@ -1,5 +1,5 @@
 PORTNAME=	fvwm3
-DISTVERSION=	g20220711
+DISTVERSION=	g20220808
 CATEGORIES=	x11-wm
 PKGNAMESUFFIX=  -dev
 DISTNAME=	${PORTNAME}-${GH_TAGNAME}
@@ -20,7 +20,7 @@ USES=		autoreconf compiler:c11 cpe pkgconfig python:3.7+ readline xorg gl
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	fvwmorg
 GH_PROJECT=	fvwm3
-GH_TAGNAME=	4d646ca61c80545f9b0467dae68da8dbe3395f72
+GH_TAGNAME=	cee5f756c7a7fdf8b6bea9c84f503a9e6c92a679
 
 USE_GL=		gl glu
 USE_XORG=       ice x11 xext xrandr xrender xt xft
