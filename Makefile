@@ -1,5 +1,5 @@
 PORTNAME=	fvwm3
-DISTVERSION=	g20220917
+DISTVERSION=	g20220918
 CATEGORIES=	x11-wm
 PKGNAMESUFFIX=  -dev
 DISTNAME=	${PORTNAME}-${GH_TAGNAME}
@@ -20,10 +20,10 @@ USES=		autoreconf compiler:c11 cpe pkgconfig python:3.7+ readline xorg gl
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	fvwmorg
 GH_PROJECT=	fvwm3
-GH_TAGNAME=	224efc9b5a98ec481ba63b8237d0edf910ba2920
+GH_TAGNAME=	12ad8d96b3cad2e72ac72880cd3190b4d1f1b3f7
 
 USE_GL=		gl glu
-USE_XORG=       ice x11 xext xrandr xrender xt xft
+USE_XORG=       ice x11 xext xrandr xt xft
 USE_LDCONFIG=	yes
 
 CONFLICTS_INSTALL=      fvwm-2.* fvwm3
@@ -37,19 +37,24 @@ CONFIGURE_ARGS= ac_cv_path_PYTHON=${PYTHON_CMD} \
 
 WRKSRC=		${WRKDIR}/fvwm3-${GH_TAGNAME}
 
-OPTIONS_DEFINE= FRIBIDI ICONV MANPAGES NCURSES NLS PERL PNG SHARUTILS SVG \
-		XCURSOR XI XPM XSM
-OPTIONS_DEFAULT=FRIBIDI ICONV MANPAGES PERL PNG XCURSOR XSM
-OPTIONS_SUB=	yes
+OPTIONS_DEFINE=			FRIBIDI ICONV MANPAGES NCURSES NLS PERL PNG SHAPED \
+				SHARUTILS SVG XRENDER XCURSOR XI XPM XSM #GOLANG
+OPTIONS_DEFAULT=		ICONV MANPAGES PNG SHAPED XCURSOR XRENDER XSM
+OPTIONS_SUB=			yes
 
-OPTIONS_RADIO=          CLI
-OPTIONS_RADIO_CLI=      LIBEDIT READLINE
+OPTIONS_RADIO=          	CLI
+OPTIONS_RADIO_CLI=      	LIBEDIT READLINE
 
-FRIBIDI_LIB_DEPENDS=	libfribidi.so:converters/fribidi
+FRIBIDI_LIB_DEPENDS=		libfribidi.so:converters/fribidi
 FRIBIDI_CONFIGURE_ENABLE=	bidi
 
-ICONV_USES=	iconv:translit
-ICONV_CONFIGURE_ENABLE=	iconv
+# This will take a little more to do properly.
+#GOLANG_DESC=			enable compilation of modules written in Go (FvwmPrompt)
+#GOLANG_USES=			go:modules
+#GOLANG_CONFIGURE_ENABLE=	golang
+
+ICONV_USES=			iconv:translit
+ICONV_CONFIGURE_ENABLE=		iconv
 
 LIBEDIT_USES=                   libedit
 LIBEDIT_CONFIGURE_ENABLE=       libedit
@@ -57,49 +62,64 @@ LIBEDIT_CONFIGURE_ENABLE=       libedit
 READLINE_USES=                  readline
 READLINE_CONFIGURE_ENABLE=      libreadline
 
-MANPAGES_BUILD_DEPENDS= rubygem-asciidoctor>0:textproc/rubygem-asciidoctor
-MANPAGES_USES=	gmake
+MANPAGES_BUILD_DEPENDS=		rubygem-asciidoctor>0:textproc/rubygem-asciidoctor
+MANPAGES_USES=			gmake
 MANPAGES_CONFIGURE_ENABLE=	mandoc
-MANPAGES_IMPLIES=	PERL
+MANPAGES_IMPLIES=		PERL
 
 NCURSES_USES=                   ncurses
 NCURSES_CONFIGURE_ENV=          NCURSES_CFLAGS="-I${NCURSESINC}" \
                                 NCURSES_LIBS="-L${NCURSESLIB} -lncursesw"
 NCURSES_CONFIGURE_ENABLE=       ncurses
 
-NLS_CONFIGURE_ENABLE=	nls
-NLS_USES=	gettext-runtime
+NLS_CONFIGURE_ENABLE=		nls
+NLS_USES=			gettext-runtime
 
-PERL_USES=	perl5
-PERL_CONFIGURE_ENABLE=	perllib
+PERL_USES=			perl5
+PERL_CONFIGURE_ENABLE=		perllib
 
-PNG_LIB_DEPENDS=	libpng.so:graphics/png
-PNG_CONFIGURE_ENABLE=	png
+PNG_LIB_DEPENDS=		libpng.so:graphics/png
+PNG_CONFIGURE_ENABLE=		png
 
-SHARUTILS_DESC=		Shell Archive Utils support
-SHARUTILS_DEPENDS=	gunshar:archivers/sharutils
-SHARUTILS_ENABLE=	sharutils
+SHARUTILS_DESC=			Shell Archive Utils support
+SHARUTILS_DEPENDS=		gunshar:archivers/sharutils
+SHARUTILS_ENABLE=		sharutils
 
-SVG_LIB_DEPENDS=	librsvg-2.so:graphics/librsvg2-rust
-SVG_USES=	gnome
-SVG_USE=	gnome=cairo,glib20,gdkpixbuf2
-SVG_CONFIGURE_ENABLE=   rsvg
+SHAPED_DESC=			Shaped window support
+SHAPED_DEPENDS=			gunshar:archivers/sharutils
+SHAPED_ENABLE=			sharutils
 
-XCURSOR_USE=	xorg=xcursor
-XCURSOR_CONFIGURE_ENABLE=	xcursor
+SVG_LIB_DEPENDS=		librsvg-2.so:graphics/librsvg2-rust
+SVG_USES=			gnome
+SVG_USE=			gnome=cairo,glib20,gdkpixbuf2
+SVG_CONFIGURE_ENABLE=  		rsvg
 
-# libxft recently made a core dependency
+XRENDER_DESC=			Alpha-blend rendering
+XCURSOR_USE=			xorg=xrender
+XCURSOR_CONFIGURE_ENABLE=	xrender
 
-XI_DESC=	X Input extension library support
-XI_USE=		xorg=xi xext
-XSM_CONFIGURE_ENABLE=   xi
+XRENDER_DESC=			Alpha-blend rendering via xrender
+XRENDER_USE=			xorg=xrender
+XRENDER_CONFIGURE_ENABLE=	xrender
 
-XPM_USE=        xorg=xpm
-XPM_CONFIGURE_OFF=      --with-xpm-library=no
+XI_DESC=			X Input extension library support
+XI_USE=				xorg=xi xext
+XSM_CONFIGURE_ENABLE=		xi
 
-XSM_DESC=       X11 session management support
-XSM_USE=        xorg=sm
-XSM_CONFIGURE_ENABLE=   sm
+XPM_USE=			xorg=xpm
+XPM_CONFIGURE_OFF=		--with-xpm-library=no
+
+XSM_DESC=			X11 session management support
+XSM_USE=			xorg=sm
+XSM_CONFIGURE_ENABLE=		sm
+
+.include <bsd.port.options.mk>
+
+#.if ${PORT_OPTIONS:MGOLANG}
+#GO_MODULE=      golang.org/x/tools
+#GO_TARGET=      ${WRKSRC}/bin/FvwmPrompt/go.mod
+#.endif
+
 
 post-patch:
 	@${REINPLACE_CMD} -e 's,/etc/,${LOCALBASE}/etc/,g' \
