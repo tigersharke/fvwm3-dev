@@ -1,5 +1,5 @@
 PORTNAME=	fvwm3
-DISTVERSION=	g20220918
+DISTVERSION=	g20220919
 CATEGORIES=	x11-wm
 PKGNAMESUFFIX=  -dev
 DISTNAME=	${PORTNAME}-${GH_TAGNAME}
@@ -20,7 +20,7 @@ USES=		autoreconf compiler:c11 cpe pkgconfig python:3.7+ readline xorg gl
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	fvwmorg
 GH_PROJECT=	fvwm3
-GH_TAGNAME=	12ad8d96b3cad2e72ac72880cd3190b4d1f1b3f7
+GH_TAGNAME=	4f1dced4820c670fb3a8f2c4a836159be97f8e0b
 
 USE_GL=		gl glu
 USE_XORG=       ice x11 xext xrandr xt xft
@@ -48,9 +48,10 @@ OPTIONS_RADIO_CLI=      	LIBEDIT READLINE
 FRIBIDI_LIB_DEPENDS=		libfribidi.so:converters/fribidi
 FRIBIDI_CONFIGURE_ENABLE=	bidi
 
-# This will take a little more to do properly.
+# This may take a little more to do properly.
 #GOLANG_DESC=			enable compilation of modules written in Go (FvwmPrompt)
 #GOLANG_USES=			go:modules
+#GOLANG_USES=			go
 #GOLANG_CONFIGURE_ENABLE=	golang
 
 ICONV_USES=			iconv:translit
@@ -115,8 +116,13 @@ XSM_CONFIGURE_ENABLE=		sm
 
 .include <bsd.port.options.mk>
 
+# Is this needed?
+# 
+# package fvwm3: no Go files in /usr/home/tigersharke/Ported_Software/x11-wm/fvwm3-dev/work/src/fvwm3
+# go/x11-wm_fvwm3-dev/fvwm3-4f1dced4820c670fb3a8f2c4a836159be97f8e0b/g20220919.mod
 #.if ${PORT_OPTIONS:MGOLANG}
 #GO_MODULE=      golang.org/x/tools
+#GO_MODULE=	github.com/fvwmorg/FvwmPrompt
 #GO_TARGET=      ${WRKSRC}/bin/FvwmPrompt/go.mod
 #.endif
 
