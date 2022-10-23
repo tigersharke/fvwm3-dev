@@ -1,5 +1,5 @@
 PORTNAME=	fvwm3
-DISTVERSION=	g20221021
+DISTVERSION=	g20221022
 CATEGORIES=	x11-wm
 PKGNAMESUFFIX=  -dev
 DISTNAME=	${PORTNAME}-${GH_TAGNAME}
@@ -21,7 +21,7 @@ USES=		autoreconf compiler:c11 cpe pkgconfig python:3.7+ xorg gl readline
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	fvwmorg
 GH_PROJECT=	fvwm3
-GH_TAGNAME=	85cf13bb095ce50e0cb237fdef05903c31238955
+GH_TAGNAME=	d6d9fbb872953b808809e00cf51ec08ac7f91499
 
 USE_GL=		gl glu
 USE_XORG=       ice x11 xext xrandr xt xft
@@ -70,7 +70,7 @@ ICONV_CONFIGURE_ENABLE=		iconv
 MANPAGES_BUILD_DEPENDS=		rubygem-asciidoctor>0:textproc/rubygem-asciidoctor
 MANPAGES_USES=			gmake
 MANPAGES_CONFIGURE_ENABLE=	mandoc
-MANPAGES_IMPLIES=		PERL
+#MANPAGES_IMPLIES=		PERL
 
 NCURSES_USES=			ncurses
 NCURSES_CONFIGURE_ENV=		NCURSES_CFLAGS="-I${NCURSESINC}" \
