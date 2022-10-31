@@ -1,5 +1,4 @@
 bin/FvwmCommand
-bin/fvwm-config
 bin/fvwm-convert-2.6
 bin/fvwm-menu-desktop
 bin/fvwm-menu-directory
@@ -51,7 +50,6 @@ libexec/fvwm3/1.0.6/FvwmTalk
 %%MANPAGES%%man/man1/fvwm3all.1.gz
 %%MANPAGES%%man/man1/fvwm3commands.1.gz
 %%MANPAGES%%man/man1/fvwm3menus.1.gz
-%%MANPAGES%%man/man1/fvwm3styles.1.gz
 %%DATADIR%%/ConfigFvwmBacker
 %%DATADIR%%/ConfigFvwmButtons
 %%DATADIR%%/ConfigFvwmDefaults
