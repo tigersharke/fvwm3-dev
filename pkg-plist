@@ -1,9 +1,9 @@
 bin/FvwmCommand
-bin/fvwm-convert-2.6
+%%PERL%%bin/fvwm-convert-2.6
 bin/fvwm-menu-desktop
-bin/fvwm-menu-directory
-bin/fvwm-menu-xlock
-bin/fvwm-perllib
+%%PERL%%bin/fvwm-menu-directory
+%%PERL%%bin/fvwm-menu-xlock
+%%PERL%%bin/fvwm-perllib
 bin/fvwm-root
 bin/fvwm3
 libexec/fvwm3/1.0.6/FvwmAnimate
@@ -39,10 +39,10 @@ libexec/fvwm3/1.0.6/FvwmTalk
 %%MANPAGES%%man/man1/FvwmPrompt.1.gz
 %%MANPAGES%%man/man1/FvwmRearrange.1.gz
 %%MANPAGES%%man/man1/FvwmScript.1.gz
-%%MANPAGES%%man/man1/fvwm-convert-2.6.1.gz
+%%MANPAGES%%%%PERL%%man/man1/fvwm-convert-2.6.1.gz
 %%MANPAGES%%man/man1/fvwm-menu-desktop.1.gz
-%%MANPAGES%%man/man1/fvwm-menu-directory.1.gz
-%%MANPAGES%%man/man1/fvwm-menu-xlock.1.gz
+%%MANPAGES%%%%PERL%%man/man1/fvwm-menu-directory.1.gz
+%%MANPAGES%%%%PERL%%man/man1/fvwm-menu-xlock.1.gz
 %%MANPAGES%%%%PERL%%man/man1/fvwm-perllib.1.gz
 %%MANPAGES%%man/man1/fvwm-root.1.gz
 %%MANPAGES%%man/man1/fvwm3.1.gz

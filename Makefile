@@ -1,5 +1,5 @@
 PORTNAME=	fvwm3
-DISTVERSION=	g20221105
+DISTVERSION=	g20221107
 CATEGORIES=	x11-wm
 PKGNAMESUFFIX=  -dev
 DISTNAME=	${PORTNAME}-${GH_TAGNAME}
@@ -21,7 +21,7 @@ USES=		autoreconf compiler:c11 cpe pkgconfig python:3.7+ xorg gl readline
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	fvwmorg
 GH_PROJECT=	fvwm3
-GH_TAGNAME=	5e79143db393c14bf2c8fe2aa2f32385a8af1716
+GH_TAGNAME=	6b9323353afd0c58b6779b280a58542222f5dd6b
 
 USE_GL=		gl glu
 USE_XORG=       ice x11 xext xrandr xt xft
@@ -142,5 +142,15 @@ post-install-PERL-off:
 .for script in FvwmConsoleC.pl FvwmPerl
 	${RM} ${STAGEDIR}${PREFIX}/libexec/fvwm3/${PORTVERSION}/${script}
 .endfor
+#
+# --disable-perllib       disable installing fvwm perl library
+# --infodir=DIR           info documentation [DATAROOTDIR/info]
+# --mandir=DIR            man documentation [DATAROOTDIR/man]
+# --docdir=DIR            documentation root [DATAROOTDIR/doc/fvwm3]
+# --htmldir=DIR           html documentation [DOCDIR]
+# --dvidir=DIR            dvi documentation [DOCDIR]
+# --pdfdir=DIR            pdf documentation [DOCDIR]
+# --psdir=DIR             ps documentation [DOCDIR]
+# --enable-mandoc         enable generation of man pages
 
 .include <bsd.port.mk>
