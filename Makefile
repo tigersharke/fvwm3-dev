@@ -21,7 +21,7 @@ USES=		autoreconf compiler:c11 cpe pkgconfig python:3.7+ xorg gl readline
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	fvwmorg
 GH_PROJECT=	fvwm3
-GH_TAGNAME=	6b9323353afd0c58b6779b280a58542222f5dd6b
+GH_TAGNAME=	9a2e4180e9a616dfad22e20cc2b2c59bdd738288
 
 USE_GL=		gl glu
 USE_XORG=       ice x11 xext xrandr xt xft
