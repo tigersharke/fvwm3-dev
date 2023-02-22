@@ -1,5 +1,5 @@
 PORTNAME=	fvwm3
-DISTVERSION=	g20230209
+DISTVERSION=	g20230220
 CATEGORIES=	x11-wm
 PKGNAMESUFFIX=  -dev
 DISTNAME=	${PORTNAME}-${GH_TAGNAME}
@@ -21,7 +21,7 @@ USES=		autoreconf compiler:c11 cpe pkgconfig python:3.7+ xorg gl readline
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	fvwmorg
 GH_PROJECT=	fvwm3
-GH_TAGNAME=	2327aac16d4437a9edeccd007ab03a91c9f35ea3
+GH_TAGNAME=	bf170633dbc582385868adfd92732d192d470540
 
 USE_GL=		gl glu
 USE_XORG=       ice x11 xext xrandr xt xft
@@ -33,14 +33,14 @@ CPE_VENDOR=     fvwm
 CPE_PRODUCT=    fvwm
 
 GNU_CONFIGURE=  yes
-CONFIGURE_ARGS= ac_cv_path_PYTHON=${PYTHON_CMD} \
-		--disable-golang
+CONFIGURE_ARGS= ac_cv_path_PYTHON=${PYTHON_CMD} #\
+#		--disable-golang
 
 WRKSRC=		${WRKDIR}/fvwm3-${GH_TAGNAME}
 # WARN: Makefile: GOLANG appears in PORT_OPTIONS:M, but is not listed in OPTIONS_DEFINE.
 
 OPTIONS_DEFINE=			FRIBIDI ICONV MANPAGES NCURSES NLS PERL PNG \
-				SHARUTILS SVG XRENDER XCURSOR XDG XI XPM XSM #GOLANG SHAPED
+				SHARUTILS SVG XRENDER XCURSOR XDG XI XPM XSM #GOLANG #SHAPED
 OPTIONS_DEFAULT=		ICONV MANPAGES PNG XCURSOR XRENDER XSM #SHAPED
 OPTIONS_SUB=			yes
 
@@ -50,10 +50,10 @@ OPTIONS_SUB=			yes
 FRIBIDI_LIB_DEPENDS=		libfribidi.so:converters/fribidi
 FRIBIDI_CONFIGURE_ENABLE=	bidi
 
-# This may take a little more to do properly.
-#GOLANG_DESC			enable compilation of modules written in Go (FvwmPrompt)#
-#GOLANG_USES			go or go:modules ?#
-#GOLANG_CONFIGURE_ENABLE	golang#
+# Needs something more for it to build the module FvwmPrompt properly.
+#GOLANG_DESC=			enable compilation of modules written in Go (FvwmPrompt)
+#GOLANG_USES=			go:modules
+#GOLANG_CONFIGURE_ENABLE=	golang
 
 ICONV_USES=			iconv:translit
 ICONV_CONFIGURE_ENABLE=		iconv
