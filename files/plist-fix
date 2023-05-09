@@ -1,0 +1,26 @@
+#!/bin/sh
+rm /var/tmp/fvwm3-dev_pkg-plist 2>/dev/null
+rm /var/tmp/fvwm3-dev_pkg-plist-fixed 2>/dev/null
+cp ../pkg-plist /var/tmp/fvwm3-dev_pkg-plist
+
+echo "adding conditional list tags"
+
+cat /var/tmp/fvwm3-dev_pkg-plist | \
+sed \
+-e 's#^bin\/fvwm-convert-2.6#\%\%PERL\%\%\bin\/fvwm-convert-2.6#g' \
+-e 's#^bin\/fvwm-menu-directory#\%\%PERL\%\%\bin\/fvwm-menu-directory#g' \
+-e 's#^bin\/fvwm-menu-xlock#\%\%PERL\%\%\bin\/fvwm-menu-xlock#g' \
+-e 's#^bin\/fvwm-perllib#\%\%PERL\%\%\bin\/fvwm-perllib#g' \
+-e 's#^man\/man1\/fvwm-convert-2.6#\%\%MANPAGES\%\%\%\%PERL\%\%\man\/man1\/fvwm-convert-2.6#g' \
+-e 's#^man\/man1\/fvwm-menu-directory#\%\%MANPAGES\%\%\%\%PERL\%\%\man\/man1\/fvwm-menu-directory#g' \
+-e 's#^man\/man1\/fvwm-menu-xlock#\%\%MANPAGES\%\%\%\%PERL\%\%\man\/man1\/fvwm-menu-xlock#g' \
+-e 's#^man\/man1\/fvwm-perllib#\%\%MANPAGES\%\%\%\%PERL\%\%\man\/man1\/fvwm-perllib#g' \
+-e 's#^man\/man1\/FvwmPerl#\%\%MANPAGES\%\%\%\%PERL\%\%\man\/man1\/FvwmPerl#g' \
+-e 's#^man\/man1\/fvwm-perllib#\%\%MANPAGES\%\%\%\%PERL\%\%\man\/man1\/fvwm-perllib#g' \
+-e 's#^man\/man1#\%\%MANPAGES\%\%man\/man1#g' \
+-e 's#^\%\%DATADIR\%\%\/fvwm-menu-desktop-config.fpl#\%\%PERL\%\%\%\%DATADIR\%\%\/fvwm-menu-desktop-config.fpl#g' \
+-e 's#^\%\%DATADIR\%\%\/fvwm-script-ComExample.pl#\%\%PERL\%\%\%\%DATADIR\%\%\/fvwm-script-ComExample.pl#g' \
+-e 's#^\%\%DATADIR\%\%/locale#\%\%NLS\%\%\%\%DATADIR\%\%/locale#g' \
+-e 's#^\%\%DATADIR\%\%/perllib#\%\%PERL\%\%\%\%DATADIR\%\%/perllib#g' \
+> /var/tmp/minetest-dev_pkg-plist-fixed
+cp /var/tmp/minetest-dev_pkg-plist-fixed ../pkg-plist

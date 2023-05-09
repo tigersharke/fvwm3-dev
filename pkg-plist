@@ -1,3 +1,4 @@
+/you/have/to/check/what/makeplist/gives/you
 bin/FvwmCommand
 %%PERL%%bin/fvwm-convert-2.6
 bin/fvwm-menu-desktop
