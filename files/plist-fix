@@ -7,6 +7,8 @@ echo "adding conditional list tags"
 
 cat /var/tmp/fvwm3-dev_pkg-plist | \
 sed \
+-e 's#^\/you\/have\/to\/check\/what\/makeplist\/gives\/you##' \
+-e '/^$/d' \
 -e 's#^bin\/fvwm-convert-2.6#\%\%PERL\%\%\bin\/fvwm-convert-2.6#g' \
 -e 's#^bin\/fvwm-menu-directory#\%\%PERL\%\%\bin\/fvwm-menu-directory#g' \
 -e 's#^bin\/fvwm-menu-xlock#\%\%PERL\%\%\bin\/fvwm-menu-xlock#g' \
