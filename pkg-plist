@@ -156,3 +156,4 @@ libexec/fvwm3/1.0.8/FvwmTalk
 %%PERL%%%%DATADIR%%/perllib/FVWM/Tracker/WindowList.pm
 %%PERL%%%%DATADIR%%/perllib/General/FileSystem.pm
 %%PERL%%%%DATADIR%%/perllib/General/Parse.pm
+share/xsessions/fvwm3.desktop
