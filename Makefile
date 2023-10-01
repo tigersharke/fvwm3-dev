@@ -1,5 +1,5 @@
 PORTNAME=	fvwm3
-DISTVERSION=	g20230904
+DISTVERSION=	g20230930
 CATEGORIES=	x11-wm
 PKGNAMESUFFIX=  -dev
 DISTNAME=	${PORTNAME}-${GH_TAGNAME}
@@ -11,8 +11,9 @@ WWW=		https://www.fvwm.org/
 
 LICENSE=        GPLv2
 
-LIB_DEPENDS=    libbson-1.0.so:devel/libbson \
-		libevent.so:devel/libevent \
+# libbson had build trouble but seems not necessary?
+#LIB_DEPENDS=    libbson-1.0.so:devel/libbson \
+LIB_DEPENDS=	libevent.so:devel/libevent \
 		libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig
 
@@ -21,7 +22,7 @@ USES=		autoreconf compiler:c11 cpe pkgconfig python:3.7+ xorg gl readline
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	fvwmorg
 GH_PROJECT=	fvwm3
-GH_TAGNAME=	018bd066aedf7bdf89494ab0bdb98c4a1ca8b2d5
+GH_TAGNAME=	d5dca45f72b0003ca0bbe27a153a08262dc0d1c8
 
 USE_GL=		gl glu
 USE_XORG=       ice x11 xext xrandr xt xft
@@ -67,7 +68,7 @@ ICONV_CONFIGURE_ENABLE=		iconv
 #READLINE_CONFIGURE_ENABLE=      libreadline
 #READLINE_PREVENTS=		LIBEDIT
 
-MANPAGES_BUILD_DEPENDS=		rubygem-asciidoctor>0:textproc/rubygem-asciidoctor
+MANPAGES_BUILD_DEPENDS=		asciidoctor:textproc/rubygem-asciidoctor
 MANPAGES_USES=			gmake
 MANPAGES_CONFIGURE_ENABLE=	mandoc
 #MANPAGES_IMPLIES=		PERL
