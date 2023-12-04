@@ -17,7 +17,7 @@ LIB_DEPENDS=	libevent.so:devel/libevent \
 		libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig
 
-USES=		autoreconf compiler:c11 cpe pkgconfig python:3.7+ xorg gl readline
+USES=		autoreconf compiler:c11 cpe pkgconfig python:3.7-3.8 xorg gl readline
 
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	fvwmorg
@@ -104,6 +104,7 @@ XRENDER_DESC=			Alpha-blend rendering
 XCURSOR_USE=			xorg=xrender,xcursor
 XCURSOR_CONFIGURE_ENABLE=	xrender
 
+# py-xdg fails with python3.9 which is why python 3.7-3.8 in Uses
 XDG_DESC=                       Add py-xdg dependency for menu generator
 XDG_RUN_DEPENDS=                ${PYTHON_SITELIBDIR}/xdg/__init__.py:devel/py-xdg@${PY_FLAVOR}
 
