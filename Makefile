@@ -136,22 +136,22 @@ post-install-PERL-off:
 # Also fix the recent change from /usr/local/man to /usr/local/share/man
 
 post-stage:
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmAnimate.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmanimate.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmAuto.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmauto.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmBacker.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmbacker.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmButtons.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmbuttons.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmCommand.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmcommand.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmConsole.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmconsole.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmEvent.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmevent.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmForm.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmform.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmIconMan.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmiconMan.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmIdent.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmident.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmMFL.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmmfl.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmPager.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmpager.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmPerl.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmperl.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmRearrange.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmrearrange.1
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/FvwmScript.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmscript.1
-	@${MV} ${STAGEDIR}/usr/local/man/man1/* ${STAGEDIR}/usr/local/share/man/man1/
+	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/* ${STAGEDIR}/usr/local/share/man/man1/
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmAnimate.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmanimate.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmAuto.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmauto.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmBacker.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmbacker.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmButtons.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmbuttons.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmCommand.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmcommand.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmConsole.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmconsole.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmEvent.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmevent.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmForm.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmform.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmIconMan.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmiconMan.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmIdent.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmident.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmMFL.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmmfl.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmPager.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmpager.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmPerl.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmperl.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmRearrange.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmrearrange.1
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmScript.1 ${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmscript.1
 
 
 # Is this removed?
