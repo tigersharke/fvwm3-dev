@@ -1,5 +1,5 @@
 PORTNAME=					fvwm3
-DISTVERSION=				g20240325
+DISTVERSION=				g20240329
 CATEGORIES=					x11-wm
 PKGNAMESUFFIX=  			-dev
 DISTNAME=					${PORTNAME}-${GH_TAGNAME}
@@ -23,7 +23,7 @@ CPE_PRODUCT=    			fvwm
 USE_GITHUB=					nodefault
 GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
-GH_TAGNAME=					533d3366be223ddd3083e91f9d9833260440db0f
+GH_TAGNAME=					56d9f8660187827ac225a80cec347e5c32e94479
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
@@ -147,9 +147,10 @@ post-install-PERL-off:
 # these manpages to lowercase only because fvwm scripts use those camelcased,
 # instead, for convenience create symbolic links.
 
+# This rename worked previously but now does not, redundant I suppose.
+#	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/* \
+#		${STAGEDIR}${LOCALBASE}/share/man/man1/
 post-stage:
-	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/* \
-		${STAGEDIR}${LOCALBASE}/share/man/man1/
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmAnimate.1 \
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmanimate.1
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmAuto.1 \
@@ -160,8 +161,6 @@ post-stage:
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmbuttons.1
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmCommand.1 \
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmcommand.1
-#	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmConsole.1 \
-#		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmconsole.1
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmEvent.1 \
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmevent.1
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmForm.1 \
