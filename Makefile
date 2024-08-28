@@ -1,5 +1,5 @@
 PORTNAME=					fvwm3
-DISTVERSION=				g20240529
+DISTVERSION=				g20240822
 CATEGORIES=					x11-wm
 PKGNAMESUFFIX=  			-dev
 DISTNAME=					${PORTNAME}-${GH_TAGNAME}
@@ -23,7 +23,7 @@ CPE_PRODUCT=    			fvwm
 USE_GITHUB=					nodefault
 GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
-GH_TAGNAME=					f0366381a1bff42235d5e28019aed75d8c2e93e5
+GH_TAGNAME=					c71b01711fb1d50b407b7f267d4cea68cc209acc
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
