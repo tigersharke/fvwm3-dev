@@ -1,6 +1,7 @@
 PORTNAME=					fvwm3
-DISTVERSION=				g20240827
+DISTVERSION=				g20241001
 CATEGORIES=					x11-wm
+MASTER_SITES=				GH
 PKGNAMESUFFIX=  			-dev
 DISTNAME=					${PORTNAME}-${GH_TAGNAME}
 DIST_SUBDIR=				${PORTNAME}
@@ -16,14 +17,14 @@ LIB_DEPENDS=				libevent.so:devel/libevent \
 							libfontconfig.so:x11-fonts/fontconfig
 
 USES=						autoreconf compiler:c11 cpe localbase:ldflags \
-							pkgconfig python:3.7-3.8 xorg gl readline
+							pkgconfig python xorg gl readline
 
 CPE_VENDOR=     			fvwm
 CPE_PRODUCT=    			fvwm
 USE_GITHUB=					nodefault
 GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
-GH_TAGNAME=					917ba28b5c9a64224ec98b1e55fe4328f7c22a2c
+GH_TAGNAME=					43870cda3274c33593011680c75bb74db5ba0271
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
