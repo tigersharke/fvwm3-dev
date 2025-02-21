@@ -28,7 +28,7 @@ GH_TAGNAME=					49637b0c7ee3a4097223e0fc1c60756dadb0598f
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
-USE_XORG=       			ice x11 xext xrandr xt xft
+USE_XORG=       			ice x11 xext xrandr xt xft xtrans
 
 GNU_CONFIGURE=  			yes
 CONFIGURE_ARGS= 			ac_cv_path_PYTHON=${PYTHON_CMD}
