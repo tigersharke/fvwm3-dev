@@ -1,5 +1,5 @@
 PORTNAME=					fvwm3
-DISTVERSION=				g20250224
+DISTVERSION=				g20251031
 CATEGORIES=					x11-wm
 MASTER_SITES=				GH
 PKGNAMESUFFIX=  			-dev
@@ -16,27 +16,28 @@ LIB_DEPENDS=				libevent.so:devel/libevent \
 							libfreetype.so:print/freetype2 \
 							libfontconfig.so:x11-fonts/fontconfig
 
-USES=						autoreconf compiler:c11 cpe localbase:ldflags \
-							pkgconfig python xorg gl readline
+USES=						meson compiler:c11 cpe \
+							pkgconfig python xorg gl readline \
+							localbase:ldflags
 
 CPE_VENDOR=     			fvwm
 CPE_PRODUCT=    			fvwm
 USE_GITHUB=					nodefault
 GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
-GH_TAGNAME=					4592849dc38e6e96ff8feded3117e8f6f207aa68
+GH_TAGNAME=					6a9b86f20bcc9f36a3e52273ed79b23fc8177528
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
 USE_XORG=       			ice x11 xext xrandr xt xft xtrans
 
-GNU_CONFIGURE=  			yes
-CONFIGURE_ARGS= 			ac_cv_path_PYTHON=${PYTHON_CMD}
-#AUTORECONF_WRKSRC=
+#MESON_ARGS= 				--buildtype debug
+MESON_ARGS=					--auto-features=disabled
 
 CONFLICTS_INSTALL=			fvwm fvwm-2.* fvwm3
 
 WRKSRC=						${WRKDIR}/fvwm3-${GH_TAGNAME}
+MESON_BUILD_DIR=			_build
 
 OPTIONS_DEFINE=				FONTCONF FRIBIDI GOLANG ICONV MANPAGES NLS \
 							PERL PNG SHAPED SHAREDMEM SVG XRENDER XCURSOR XDG \
@@ -59,60 +60,59 @@ XI_DESC=					X Input extension library support
 XRENDER_DESC=				Alpha-blend rendering
 XSM_DESC=					X11 session management support
 
-FONTCONF_CONFIGURE_ENABLE=	fontconfigtest
+FONTCONF_MESON_ENABLE=		fontconfigtest
 
 FRIBIDI_LIB_DEPENDS=		libfribidi.so:converters/fribidi
-FRIBIDI_CONFIGURE_ENABLE=	bidi
+FRIBIDI_MESON_ENABLE=		bidi
 
 # Does this need something more for it to build the module FvwmPrompt properly?
 GOLANG_USES=				go:no_targets
-GOLANG_CONFIGURE_ENABLE=	golang
+GOLANG_MESON_ENABLE=		golang
 
-ICONV_USES=					iconv:translit
-ICONV_CONFIGURE_ENABLE=		iconv
+ICONV_USES=					iconv
+ICONV_MESON_ENABLE=			iconv
 
 MANPAGES_BUILD_DEPENDS=		asciidoctor:textproc/rubygem-asciidoctor
-MANPAGES_USES=				gmake
-MANPAGES_CONFIGURE_ENABLE=	mandoc
+MANPAGES_MESON_TRUE=		mandoc
 
 NLS_USES=					gettext-runtime
-NLS_CONFIGURE_ENABLE=		nls
+NLS_MESON_ENABLE=			nls
 
 PERL_USES=					perl5
-PERL_CONFIGURE_ENABLE=		perllib
+PERL_MESON_ENABLE=			perllib
 
 PNG_LIB_DEPENDS=			libpng.so:graphics/png
-PNG_CONFIGURE_ENABLE=		png
+PNG_MESON_ENABLE=			png
 
 #SHAPED_DEPENDS=			#
-SHAPED_CONFIGURE_ENABLE=	shape
+SHAPED_MESON_ENABLE=		shape
 
-SHAREDMEM_CONFIGURE_ENABLE=	shm
+SHAREDMEM_MESON_ENABLE=		shm
 
 SVG_LIB_DEPENDS=			librsvg-2.so:graphics/librsvg2-rust
 SVG_USES=					gnome
-SVG_USE=					gnome=cairo,glib20,gdkpixbuf2
-SVG_CONFIGURE_ENABLE=  		rsvg
+SVG_USE=					gnome=cairo,glib20,gdkpixbufextra
+SVG_MESON_ENABLE=  			cairo-svg
 
 XCURSOR_USE=				xorg=xrender,xcursor
-XCURSOR_CONFIGURE_ENABLE=	xrender
+XCURSOR_MESON_ENABLE=		xrender
 
 # py-xdg fails with python3.9 which is why python 3.7-3.8 was in Uses
 XDG_RUN_DEPENDS=			${PYTHON_SITELIBDIR}/xdg/__init__.py:devel/py-xdg@${PY_FLAVOR}
 
-XFTTEST_CONFIGURE_ENABLE=	xfttest
+XFTTEST_MESON_ENABLE=		xfttest
 
 XI_USE=						xorg=xi xext
-XI_CONFIGURE_ENABLE=		xi
+XI_MESON_ENABLE=			xi
 
 XPM_USE=					xorg=xpm
-XPM_CONFIGURE_OFF=			--with-xpm-library=no
+#XPM_MESON_OFF=				xpm
 
 XRENDER_USE=				xorg=xrender
-XRENDER_CONFIGURE_ENABLE=	xrender
+XRENDER_MESON_ENABLE=		xrender
 
 XSM_USE=					xorg=sm
-XSM_CONFIGURE_ENABLE=		sm
+XSM_MESON_ENABLE=			sm
 
 .include <bsd.port.options.mk>
 
@@ -122,16 +122,16 @@ XSM_CONFIGURE_ENABLE=		sm
 # /usr/home/tigersharke/Ported_Software/x11-wm/fvwm3-dev/work/src/fvwm3
 # go/x11-wm_fvwm3-dev/fvwm3-4f1dced4820c670fb3a8f2c4a836159be97f8e0b/
 #	g20220919.mod
-#.if ${PORT OPTIONS:MGOLANG}
-#GO_MODULE      golang.org/x/tools
-#GO_MODULE		github.com/fvwmorg/FvwmPrompt
-#GO_TARGET      ${WRKSRC}/bin/FvwmPrompt/go.mod
+#.if ${PORT_OPTIONS:MGOLANG}
+#	GO_MODULE golang.org/x/tools
+#	GO_MODULE github.com/fvwmorg/FvwmPrompt
+#	GO_TARGET ${WRKSRC}/bin/FvwmPrompt/go.mod
 #.endif
 
 # This needs a better method if available.
-post-patch:
-	@${REINPLACE_CMD} -e 's,/etc/,${LOCALBASE}/etc/,g' \
-	${WRKSRC}/bin/fvwm-menu-desktop.in
+#post-patch:
+#	@${REINPLACE_CMD} -e 's,/etc/,${LOCALBASE}/etc/,g' \
+#	${WRKSRC}/bin/fvwm-menu-desktop.in
 
 post-install-PERL-off:
 .for script in fvwm-convert-2.6 fvwm-menu-directory fvwm-menu-xlock fvwm-perllib
@@ -152,6 +152,7 @@ post-install-PERL-off:
 #	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/* \
 #		${STAGEDIR}${LOCALBASE}/share/man/man1/
 post-stage:
+.if ${PORT_OPTIONS:MMANPAGES}
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmAnimate.1 \
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmanimate.1
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmAuto.1 \
@@ -180,6 +181,7 @@ post-stage:
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmrearrange.1
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmScript.1 \
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmscript.1
+.endif
 
 # --disable-perllib       disable installing fvwm perl library
 # --infodir=DIR           info documentation [DATAROOTDIR/info]

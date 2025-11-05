@@ -28,6 +28,7 @@ sed \
 -e 's#^\%\%DATADIR\%\%\/fvwm-menu-desktop-config.fpl#\%\%PERL\%\%\%\%DATADIR\%\%\/fvwm-menu-desktop-config.fpl#g' \
 -e 's#^\%\%DATADIR\%\%\/fvwm-script-ComExample.pl#\%\%PERL\%\%\%\%DATADIR\%\%\/fvwm-script-ComExample.pl#g' \
 -e 's#^\%\%DATADIR\%\%/locale#\%\%NLS\%\%\%\%DATADIR\%\%/locale#g' \
+-e 's#^share\/locale#\%\%NLS\%\%\%\%DATADIR\%\%/locale#g' \
 -e 's#^\%\%DATADIR\%\%/perllib#\%\%PERL\%\%\%\%DATADIR\%\%/perllib#g' \
 > /var/tmp/fvwm-dev_pkg-plist-fixed
 cp /var/tmp/fvwm-dev_pkg-plist-fixed ../pkg-plist
