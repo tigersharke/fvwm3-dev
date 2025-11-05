@@ -182,6 +182,13 @@ post-stage:
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmScript.1 \
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmscript.1
 .endif
+.if ${PORT_OPTIONS:MNLS}
+	${MKDIR} ${STAGEDIR}${LOCALBASE}/share/fvwm3
+	@${LN} -s ${STAGEDIR}${LOCALBASE}/share/locale \
+	${STAGEDIR}${LOCALBASE}/share/fvwm3/locale
+.endif
+
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/ar/LC_MESSAGES/fvwm3.mo:No such file or directory
 
 # --disable-perllib       disable installing fvwm perl library
 # --infodir=DIR           info documentation [DATAROOTDIR/info]
