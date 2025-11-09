@@ -152,8 +152,14 @@ post-install-PERL-off:
 # This rename worked previously but now does not, redundant I suppose.
 #	@${MV} ${STAGEDIR}${LOCALBASE}/man/man1/* \
 #		${STAGEDIR}${LOCALBASE}/share/man/man1/
-post-stage:
-.if ${PORT_OPTIONS:MMANPAGES}
+#.if ${PORT_OPTIONS:MNLS}
+
+post-stage-NLS-on:
+	@${MKDIR} ${STAGEDIR}${LOCALBASE}/share/fvwm3 
+	@${MV} ${STAGEDIR}${LOCALBASE}/share/locale/ \
+	${STAGEDIR}${LOCALBASE}/share/fvwm3/
+
+post-stage-MMANPAGES-on:
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmAnimate.1 \
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmanimate.1
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmAuto.1 \
@@ -182,14 +188,20 @@ post-stage:
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmrearrange.1
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmScript.1 \
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmscript.1
-.endif
-.if ${PORT_OPTIONS:MNLS}
-	${MKDIR} ${STAGEDIR}${LOCALBASE}/share/fvwm3
-	@${LN} -s ${STAGEDIR}${LOCALBASE}/share/locale \
-	${STAGEDIR}${LOCALBASE}/share/fvwm3/locale
-.endif
 
 # pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/ar/LC_MESSAGES/fvwm3.mo:No such file or directory
+# /usr/local/share/.pkgtemp.fvwm3.
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale:No such file or directory
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/ar/LC_MESSAGES/fvwm3.mo:No such file or directory
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/da/LC_MESSAGES/fvwm3.mo:No such file or directory
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/de/LC_MESSAGES/fvwm3.mo:No such file or directory
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/es/LC_MESSAGES/fvwm3.mo:No such file or directory
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/fr/LC_MESSAGES/fvwm3.mo:No such file or directory
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/ru/LC_MESSAGES/fvwm3.mo:No such file or directory
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/sv_SE/LC_MESSAGES/fvwm3.mo:No such file or directory
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/uk/LC_MESSAGES/fvwm3.mo:No such file or directory
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/zh_CN/LC_MESSAGES/fvwm3.mo:No such file or directory
+# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/zh_TW/LC_MESSAGES/fvwm3.mo:No such file or directory
 
 # --disable-perllib       disable installing fvwm perl library
 # --infodir=DIR           info documentation [DATAROOTDIR/info]
