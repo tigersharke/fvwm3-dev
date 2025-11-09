@@ -1,5 +1,5 @@
 PORTNAME=					fvwm3
-DISTVERSION=				g20251031
+DISTVERSION=				g20251108
 CATEGORIES=					x11-wm
 MASTER_SITES=				GH
 PKGNAMESUFFIX=  			-dev
@@ -16,8 +16,10 @@ LIB_DEPENDS=				libevent.so:devel/libevent \
 							libfreetype.so:print/freetype2 \
 							libfontconfig.so:x11-fonts/fontconfig
 
-USES=						meson compiler:c11 cpe \
-							pkgconfig python xorg gl readline \
+USES=						meson \
+							compiler:features \
+							cpe pkgconfig python \
+							xorg gl readline \
 							localbase:ldflags
 
 CPE_VENDOR=     			fvwm
@@ -25,14 +27,13 @@ CPE_PRODUCT=    			fvwm
 USE_GITHUB=					nodefault
 GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
-GH_TAGNAME=					6a9b86f20bcc9f36a3e52273ed79b23fc8177528
+GH_TAGNAME=					694f0d8e212979fb80de669bc9919ca3aca80c45
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
 USE_XORG=       			ice x11 xext xrandr xt xft xtrans
 
-#MESON_ARGS= 				--buildtype debug
-MESON_ARGS=					--auto-features=disabled
+MESON_ARGS=                 --auto-features=disabled --buildtype=minsize
 
 CONFLICTS_INSTALL=			fvwm fvwm-2.* fvwm3
 
