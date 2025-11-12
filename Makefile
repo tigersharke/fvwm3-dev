@@ -12,15 +12,13 @@ WWW=						https://www.fvwm.org/
 
 LICENSE=        			GPLv2
 
-LIB_DEPENDS=				libevent.so:devel/libevent \
-							libfreetype.so:print/freetype2 \
-							libfontconfig.so:x11-fonts/fontconfig
+LIB_DEPENDS=                libevent.so:devel/libevent \
+                            libfreetype.so:print/freetype2 \
+                            libfontconfig.so:x11-fonts/fontconfig \
+							libxkbcommon.so:x11/libxkbcommon
 
-USES=						meson \
-							compiler:features \
-							cpe pkgconfig python \
-							xorg gl readline \
-							localbase:ldflags
+USES=						meson compiler:c11 cpe localbase:ldflags \
+                            pkgconfig python xorg gl readline
 
 CPE_VENDOR=     			fvwm
 CPE_PRODUCT=    			fvwm
@@ -31,9 +29,10 @@ GH_TAGNAME=					694f0d8e212979fb80de669bc9919ca3aca80c45
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
-USE_XORG=       			ice x11 xext xrandr xt xft xtrans
+USE_XORG=       			ice x11 xext xft xrandr xrender xt xtrans
 
-MESON_ARGS=                 --auto-features=disabled --buildtype=minsize
+MESON_ARGS=                 --auto-features=disabled
+# --buildtype=minsize
 
 CONFLICTS_INSTALL=			fvwm fvwm-2.* fvwm3
 
@@ -41,7 +40,7 @@ WRKSRC=						${WRKDIR}/fvwm3-${GH_TAGNAME}
 MESON_BUILD_DIR=			_build
 
 OPTIONS_DEFINE=				FONTCONF FRIBIDI GOLANG ICONV MANPAGES NLS \
-							PERL PNG SHAPED SHAREDMEM SVG XRENDER XCURSOR XDG \
+							PERL PNG SHAPED SHAREDMEM SVG XCURSOR XDG \
 							XFTTEST XI XPM XSM
 OPTIONS_DEFAULT=			FONTCONF ICONV MANPAGES PNG SHAPED SHAREDMEM SVG \
 							XCURSOR XDG XFTTEST XI XRENDER XSM
@@ -58,7 +57,7 @@ XCURSOR_DESC=				Alpha-blend rendering via xrender
 XDG_DESC=					Add py-xdg dependency for menu generator
 XFTTEST_DESC=				Try to compile and run a test Xft program
 XI_DESC=					X Input extension library support
-XRENDER_DESC=				Alpha-blend rendering
+#XRENDER_DESC=				Alpha-blend rendering
 XSM_DESC=					X11 session management support
 
 FONTCONF_MESON_ENABLE=		fontconfigtest
@@ -109,8 +108,8 @@ XI_MESON_ENABLE=			xi
 XPM_USE=					xorg=xpm
 #XPM_MESON_OFF=				xpm
 
-XRENDER_USE=				xorg=xrender
-XRENDER_MESON_ENABLE=		xrender
+#XRENDER_USE=				xorg=xrender
+#XRENDER_MESON_ENABLE=		xrender
 
 XSM_USE=					xorg=sm
 XSM_MESON_ENABLE=			sm
