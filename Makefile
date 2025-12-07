@@ -1,5 +1,5 @@
 PORTNAME=					fvwm3
-DISTVERSION=				g20251108
+DISTVERSION=				g20251127
 CATEGORIES=					x11-wm
 MASTER_SITES=				GH
 PKGNAMESUFFIX=  			-dev
@@ -11,7 +11,6 @@ COMMENT=        			F? Virtual Window Manager
 WWW=						https://www.fvwm.org/
 
 LICENSE=        			GPLv2
-
 LIB_DEPENDS=                libevent.so:devel/libevent \
                             libfreetype.so:print/freetype2 \
                             libfontconfig.so:x11-fonts/fontconfig \
@@ -19,19 +18,21 @@ LIB_DEPENDS=                libevent.so:devel/libevent \
 
 USES=						meson compiler:c11 cpe localbase:ldflags \
                             pkgconfig python xorg gl readline
+#							shebangfix
 
 CPE_VENDOR=     			fvwm
 CPE_PRODUCT=    			fvwm
 USE_GITHUB=					nodefault
 GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
-GH_TAGNAME=					694f0d8e212979fb80de669bc9919ca3aca80c45
+GH_TAGNAME=					810b35dcff7c697b54cc445c8e1198b404d57d4f
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
 USE_XORG=       			ice x11 xext xft xrandr xrender xt xtrans
 
-MESON_ARGS=                 --auto-features=disabled
+MESON_ARGS=                 --auto-features=disabled \
+							-Dpython=${PYTHON_CMD}
 # --buildtype=minsize
 
 CONFLICTS_INSTALL=			fvwm fvwm-2.* fvwm3
@@ -187,20 +188,6 @@ post-stage-MMANPAGES-on:
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmrearrange.1
 	@${LN} ${STAGEDIR}${LOCALBASE}/share/man/man1/FvwmScript.1 \
 		${STAGEDIR}${LOCALBASE}/share/man/man1/fvwmscript.1
-
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/ar/LC_MESSAGES/fvwm3.mo:No such file or directory
-# /usr/local/share/.pkgtemp.fvwm3.
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale:No such file or directory
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/ar/LC_MESSAGES/fvwm3.mo:No such file or directory
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/da/LC_MESSAGES/fvwm3.mo:No such file or directory
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/de/LC_MESSAGES/fvwm3.mo:No such file or directory
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/es/LC_MESSAGES/fvwm3.mo:No such file or directory
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/fr/LC_MESSAGES/fvwm3.mo:No such file or directory
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/ru/LC_MESSAGES/fvwm3.mo:No such file or directory
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/sv_SE/LC_MESSAGES/fvwm3.mo:No such file or directory
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/uk/LC_MESSAGES/fvwm3.mo:No such file or directory
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/zh_CN/LC_MESSAGES/fvwm3.mo:No such file or directory
-# pkg-static: Unable to access file /home/tigersharke/fvwm3-dev/work/stage/usr/local/share/fvwm3/locale/zh_TW/LC_MESSAGES/fvwm3.mo:No such file or directory
 
 # --disable-perllib       disable installing fvwm perl library
 # --infodir=DIR           info documentation [DATAROOTDIR/info]
