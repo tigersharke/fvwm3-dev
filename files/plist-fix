@@ -6,29 +6,16 @@ cp ../pkg-plist /var/tmp/fvwm3-dev_pkg-plist
 echo "adding conditional list tags"
 
 cat /var/tmp/fvwm3-dev_pkg-plist | \
+sed '/^@dir/d' | \
+sed '/^\/you/d' | \
 sed \
--e 's#^\/you\/have\/to\/check\/what\/makeplist\/gives\/you##' \
 -e '/^$/d' \
 -e 's#^bin\/FvwmPrompt#\%\%GOLANG\%\%\bin\/FvwmPrompt#g' \
--e 's#^bin\/fvwm-convert-2.6#\%\%PERL\%\%\bin\/fvwm-convert-2.6#g' \
--e 's#^bin\/fvwm-menu-directory#\%\%PERL\%\%\bin\/fvwm-menu-directory#g' \
--e 's#^bin\/fvwm-menu-xlock#\%\%PERL\%\%\bin\/fvwm-menu-xlock#g' \
--e 's#^bin\/fvwm-perllib#\%\%PERL\%\%\bin\/fvwm-perllib#g' \
 -e 's#^libexec\/fvwm3\/\([0-9]\.[0-9]\.[0-9])*\)\/FvwmCommandS#\%\%GOLANG\%\%\libexec\/fvwm3\/\1\/FvwmCommandS \
 \%\%NO_GOLANG\%\%\libexec\/fvwm3\/\1\/FvwmConsoleC\n\%\%NO_GOLANG\%\%\libexec\/fvwm3\/\1\/FvwmConsole#g' \
--e 's#^libexec\/fvwm3\/\([0-9]\.[0-9]\.[0-9])*\)\/FvwmPerl#\%\%PERL\%\%\libexec\/fvwm3\/\1\/FvwmPerl#g' \
--e 's#^share\/man\/man1\/fvwm-convert-2.6#\%\%MANPAGES\%\%\%\%PERL\%\%\share\/man\/man1\/fvwm-convert-2.6#g' \
--e 's#^share\/man\/man1\/fvwm-menu-directory#\%\%MANPAGES\%\%\%\%PERL\%\%\share\/man\/man1\/fvwm-menu-directory#g' \
--e 's#^share\/man\/man1\/fvwm-menu-xlock#\%\%MANPAGES\%\%\%\%PERL\%\%\share\/man\/man1\/fvwm-menu-xlock#g' \
--e 's#^share\/man\/man1\/fvwm-perllib#\%\%MANPAGES\%\%\%\%PERL\%\%\share\/man\/man1\/fvwm-perllib#g' \
--e 's#^share\/man\/man1\/fvwmPerl#\%\%MANPAGES\%\%\%\%PERL\%\%\share\/man\/man1\/fvwmperl#g' \
--e 's#^share\/man\/man1\/fvwm-perllib#\%\%MANPAGES\%\%\%\%PERL\%\%\share\/man\/man1\/fvwm-perllib#g' \
 -e 's#\%\%MANPAGES\%\%share\/man\/man1\/FvwmConsole#\%\%GOLANG\%\%\%\%MANPAGES\%\%share\/man\/man1\/FvwmConsole#g' \
 -e 's#^share\/man\/man1#\%\%MANPAGES\%\%share\/man\/man1#g' \
--e 's#^\%\%DATADIR\%\%\/fvwm-menu-desktop-config.fpl#\%\%PERL\%\%\%\%DATADIR\%\%\/fvwm-menu-desktop-config.fpl#g' \
--e 's#^\%\%DATADIR\%\%\/fvwm-script-ComExample.pl#\%\%PERL\%\%\%\%DATADIR\%\%\/fvwm-script-ComExample.pl#g' \
 -e 's#^\%\%DATADIR\%\%/locale#\%\%NLS\%\%\%\%DATADIR\%\%/locale#g' \
 -e 's#^share\/locale#\%\%NLS\%\%\%\%DATADIR\%\%/locale#g' \
--e 's#^\%\%DATADIR\%\%/perllib#\%\%PERL\%\%\%\%DATADIR\%\%/perllib#g' \
 > /var/tmp/fvwm-dev_pkg-plist-fixed
 cp /var/tmp/fvwm-dev_pkg-plist-fixed ../pkg-plist

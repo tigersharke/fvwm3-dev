@@ -1,5 +1,5 @@
 PORTNAME=					fvwm3
-DISTVERSION=				g20251127
+DISTVERSION=				g20251207
 CATEGORIES=					x11-wm
 MASTER_SITES=				GH
 PKGNAMESUFFIX=  			-dev
@@ -17,7 +17,7 @@ LIB_DEPENDS=                libevent.so:devel/libevent \
 							libxkbcommon.so:x11/libxkbcommon
 
 USES=						meson compiler:c11 cpe localbase:ldflags \
-                            pkgconfig python xorg gl readline
+                            pkgconfig python xorg gl readline perl5
 #							shebangfix
 
 CPE_VENDOR=     			fvwm
@@ -25,7 +25,7 @@ CPE_PRODUCT=    			fvwm
 USE_GITHUB=					nodefault
 GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
-GH_TAGNAME=					810b35dcff7c697b54cc445c8e1198b404d57d4f
+GH_TAGNAME=					de93b7dfe4140ff06f62911de9b75b6b0fb6baae
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
@@ -41,7 +41,7 @@ WRKSRC=						${WRKDIR}/fvwm3-${GH_TAGNAME}
 MESON_BUILD_DIR=			_build
 
 OPTIONS_DEFINE=				FONTCONF FRIBIDI GOLANG ICONV MANPAGES NLS \
-							PERL PNG SHAPED SHAREDMEM SVG XCURSOR XDG \
+							PNG SHAPED SHAREDMEM SVG XCURSOR XDG \
 							XFTTEST XI XPM XSM
 OPTIONS_DEFAULT=			FONTCONF ICONV MANPAGES PNG SHAPED SHAREDMEM SVG \
 							XCURSOR XDG XFTTEST XI XRENDER XSM
@@ -78,9 +78,6 @@ MANPAGES_MESON_TRUE=		mandoc
 
 NLS_USES=					gettext-runtime
 NLS_MESON_ENABLE=			nls
-
-PERL_USES=					perl5
-PERL_MESON_ENABLE=			perllib
 
 PNG_LIB_DEPENDS=			libpng.so:graphics/png
 PNG_MESON_ENABLE=			png
@@ -133,14 +130,6 @@ XSM_MESON_ENABLE=			sm
 #post-patch:
 #	@${REINPLACE_CMD} -e 's,/etc/,${LOCALBASE}/etc/,g' \
 #	${WRKSRC}/bin/fvwm-menu-desktop.in
-
-post-install-PERL-off:
-.for script in fvwm-convert-2.6 fvwm-menu-directory fvwm-menu-xlock fvwm-perllib
-	${RM} ${STAGEDIR}${PREFIX}/bin/${script}
-.endfor
-.for script in FvwmConsoleC.pl FvwmPerl
-	${RM} ${STAGEDIR}${PREFIX}/libexec/fvwm3/${PORTVERSION}/${script}
-.endfor
 
 # This detail has been annoying, why are some manpages all lowercase and some
 # have an initial capital? Whether there was a purpose, the vast majority of

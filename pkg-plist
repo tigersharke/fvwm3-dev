@@ -1,9 +1,9 @@
 bin/FvwmCommand
-%%PERL%%bin/fvwm-convert-2.6
+bin/fvwm-convert-2.6
 bin/fvwm-menu-desktop
-%%PERL%%bin/fvwm-menu-directory
-%%PERL%%bin/fvwm-menu-xlock
-%%PERL%%bin/fvwm-perllib
+bin/fvwm-menu-directory
+bin/fvwm-menu-xlock
+bin/fvwm-perllib
 bin/fvwm-root
 bin/fvwm3
 libexec/fvwm3/1.1.5/FvwmAnimate
@@ -21,7 +21,7 @@ libexec/fvwm3/1.1.5/FvwmIconMan
 libexec/fvwm3/1.1.5/FvwmIdent
 libexec/fvwm3/1.1.5/FvwmMFL
 libexec/fvwm3/1.1.5/FvwmPager
-%%PERL%%libexec/fvwm3/1.1.5/FvwmPerl
+libexec/fvwm3/1.1.5/FvwmPerl
 libexec/fvwm3/1.1.5/FvwmRearrange
 libexec/fvwm3/1.1.5/FvwmScript
 libexec/fvwm3/1.1.5/FvwmTalk
@@ -97,8 +97,8 @@ libexec/fvwm3/1.1.5/FvwmTalk
 %%DATADIR%%/default-config/images/icons/win/title.png
 %%DATADIR%%/default-config/images/icons/win/top.png
 %%DATADIR%%/default-config/stalonetrayrc
-%%PERL%%%%DATADIR%%/fvwm-menu-desktop-config.fpl
-%%PERL%%%%DATADIR%%/fvwm-script-ComExample.pl
+%%DATADIR%%/fvwm-menu-desktop-config.fpl
+%%DATADIR%%/fvwm-script-ComExample.pl
 %%NLS%%%%DATADIR%%/locale/ar/LC_MESSAGES/fvwm3.mo
 %%NLS%%%%DATADIR%%/locale/da/LC_MESSAGES/fvwm3.mo
 %%NLS%%%%DATADIR%%/locale/de/LC_MESSAGES/fvwm3.mo
@@ -109,22 +109,22 @@ libexec/fvwm3/1.1.5/FvwmTalk
 %%NLS%%%%DATADIR%%/locale/uk/LC_MESSAGES/fvwm3.mo
 %%NLS%%%%DATADIR%%/locale/zh_CN/LC_MESSAGES/fvwm3.mo
 %%NLS%%%%DATADIR%%/locale/zh_TW/LC_MESSAGES/fvwm3.mo
-%%PERL%%%%DATADIR%%/perllib/FVWM/Commands.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Constants.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Event.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/EventNames.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Module.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Module/Terminal.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Module/Toolkit.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Tracker.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Tracker/Colorsets.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Tracker/GlobalConfig.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Tracker/ModuleConfig.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Tracker/PageInfo.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Tracker/Scheduler.pm
-%%PERL%%%%DATADIR%%/perllib/FVWM/Tracker/WindowList.pm
-%%PERL%%%%DATADIR%%/perllib/General/FileSystem.pm
-%%PERL%%%%DATADIR%%/perllib/General/Parse.pm
+%%DATADIR%%/perllib/FVWM/Commands.pm
+%%DATADIR%%/perllib/FVWM/Constants.pm
+%%DATADIR%%/perllib/FVWM/Event.pm
+%%DATADIR%%/perllib/FVWM/EventNames.pm
+%%DATADIR%%/perllib/FVWM/Module.pm
+%%DATADIR%%/perllib/FVWM/Module/Terminal.pm
+%%DATADIR%%/perllib/FVWM/Module/Toolkit.pm
+%%DATADIR%%/perllib/FVWM/Tracker.pm
+%%DATADIR%%/perllib/FVWM/Tracker/Colorsets.pm
+%%DATADIR%%/perllib/FVWM/Tracker/GlobalConfig.pm
+%%DATADIR%%/perllib/FVWM/Tracker/ModuleConfig.pm
+%%DATADIR%%/perllib/FVWM/Tracker/PageInfo.pm
+%%DATADIR%%/perllib/FVWM/Tracker/Scheduler.pm
+%%DATADIR%%/perllib/FVWM/Tracker/WindowList.pm
+%%DATADIR%%/perllib/General/FileSystem.pm
+%%DATADIR%%/perllib/General/Parse.pm
 %%MANPAGES%%share/man/man1/FvwmAnimate.1.gz
 %%MANPAGES%%share/man/man1/FvwmAuto.1.gz
 %%MANPAGES%%share/man/man1/FvwmBacker.1.gz
@@ -139,11 +139,11 @@ libexec/fvwm3/1.1.5/FvwmTalk
 %%MANPAGES%%share/man/man1/FvwmPerl.1.gz
 %%MANPAGES%%share/man/man1/FvwmRearrange.1.gz
 %%MANPAGES%%share/man/man1/FvwmScript.1.gz
-%%MANPAGES%%%%PERL%%share/man/man1/fvwm-convert-2.6.1.gz
+%%MANPAGES%%share/man/man1/fvwm-convert-2.6.1.gz
 %%MANPAGES%%share/man/man1/fvwm-menu-desktop.1.gz
-%%MANPAGES%%%%PERL%%share/man/man1/fvwm-menu-directory.1.gz
-%%MANPAGES%%%%PERL%%share/man/man1/fvwm-menu-xlock.1.gz
-%%MANPAGES%%%%PERL%%share/man/man1/fvwm-perllib.1.gz
+%%MANPAGES%%share/man/man1/fvwm-menu-directory.1.gz
+%%MANPAGES%%share/man/man1/fvwm-menu-xlock.1.gz
+%%MANPAGES%%share/man/man1/fvwm-perllib.1.gz
 %%MANPAGES%%share/man/man1/fvwm-root.1.gz
 %%MANPAGES%%share/man/man1/fvwm3.1.gz
 %%MANPAGES%%share/man/man1/fvwm3all.1.gz
@@ -151,82 +151,3 @@ libexec/fvwm3/1.1.5/FvwmTalk
 %%MANPAGES%%share/man/man1/fvwm3menus.1.gz
 %%MANPAGES%%share/man/man1/fvwm3styles.1.gz
 share/xsessions/fvwm3.desktop
-@dir %%DATADIR%%/locale/af/LC_MESSAGES
-@dir %%DATADIR%%/locale/am/LC_MESSAGES
-@dir %%DATADIR%%/locale/az/LC_MESSAGES
-@dir %%DATADIR%%/locale/be/LC_MESSAGES
-@dir %%DATADIR%%/locale/bg/LC_MESSAGES
-@dir %%DATADIR%%/locale/bn/LC_MESSAGES
-@dir %%DATADIR%%/locale/br/LC_MESSAGES
-@dir %%DATADIR%%/locale/bs/LC_MESSAGES
-@dir %%DATADIR%%/locale/ca/LC_MESSAGES
-@dir %%DATADIR%%/locale/cs/LC_MESSAGES
-@dir %%DATADIR%%/locale/cy/LC_MESSAGES
-@dir %%DATADIR%%/locale/de_AT/LC_MESSAGES
-@dir %%DATADIR%%/locale/dk/LC_MESSAGES
-@dir %%DATADIR%%/locale/ee/LC_MESSAGES
-@dir %%DATADIR%%/locale/el/LC_MESSAGES
-@dir %%DATADIR%%/locale/en/LC_MESSAGES
-@dir %%DATADIR%%/locale/en_AU/LC_MESSAGES
-@dir %%DATADIR%%/locale/en_CA/LC_MESSAGES
-@dir %%DATADIR%%/locale/en_GB/LC_MESSAGES
-@dir %%DATADIR%%/locale/eo/LC_MESSAGES
-@dir %%DATADIR%%/locale/es_ES/LC_MESSAGES
-@dir %%DATADIR%%/locale/es_MX/LC_MESSAGES
-@dir %%DATADIR%%/locale/et/LC_MESSAGES
-@dir %%DATADIR%%/locale/eu/LC_MESSAGES
-@dir %%DATADIR%%/locale/fa/LC_MESSAGES
-@dir %%DATADIR%%/locale/fa_IR/LC_MESSAGES
-@dir %%DATADIR%%/locale/fi/LC_MESSAGES
-@dir %%DATADIR%%/locale/fr_FR/LC_MESSAGES
-@dir %%DATADIR%%/locale/ga/LC_MESSAGES
-@dir %%DATADIR%%/locale/gl/LC_MESSAGES
-@dir %%DATADIR%%/locale/gu/LC_MESSAGES
-@dir %%DATADIR%%/locale/he/LC_MESSAGES
-@dir %%DATADIR%%/locale/hi/LC_MESSAGES
-@dir %%DATADIR%%/locale/hr/LC_MESSAGES
-@dir %%DATADIR%%/locale/hu/LC_MESSAGES
-@dir %%DATADIR%%/locale/id/LC_MESSAGES
-@dir %%DATADIR%%/locale/is/LC_MESSAGES
-@dir %%DATADIR%%/locale/it/LC_MESSAGES
-@dir %%DATADIR%%/locale/ja/LC_MESSAGES
-@dir %%DATADIR%%/locale/ka/LC_MESSAGES
-@dir %%DATADIR%%/locale/kn/LC_MESSAGES
-@dir %%DATADIR%%/locale/ko/LC_MESSAGES
-@dir %%DATADIR%%/locale/li/LC_MESSAGES
-@dir %%DATADIR%%/locale/lt/LC_MESSAGES
-@dir %%DATADIR%%/locale/lv/LC_MESSAGES
-@dir %%DATADIR%%/locale/mk/LC_MESSAGES
-@dir %%DATADIR%%/locale/ml/LC_MESSAGES
-@dir %%DATADIR%%/locale/mn/LC_MESSAGES
-@dir %%DATADIR%%/locale/ms/LC_MESSAGES
-@dir %%DATADIR%%/locale/mt/LC_MESSAGES
-@dir %%DATADIR%%/locale/nb/LC_MESSAGES
-@dir %%DATADIR%%/locale/ne/LC_MESSAGES
-@dir %%DATADIR%%/locale/nl/LC_MESSAGES
-@dir %%DATADIR%%/locale/nn/LC_MESSAGES
-@dir %%DATADIR%%/locale/no/LC_MESSAGES
-@dir %%DATADIR%%/locale/or/LC_MESSAGES
-@dir %%DATADIR%%/locale/pa/LC_MESSAGES
-@dir %%DATADIR%%/locale/pl/LC_MESSAGES
-@dir %%DATADIR%%/locale/pt/LC_MESSAGES
-@dir %%DATADIR%%/locale/pt_BR/LC_MESSAGES
-@dir %%DATADIR%%/locale/pt_PT/LC_MESSAGES
-@dir %%DATADIR%%/locale/ro/LC_MESSAGES
-@dir %%DATADIR%%/locale/sk/LC_MESSAGES
-@dir %%DATADIR%%/locale/sl/LC_MESSAGES
-@dir %%DATADIR%%/locale/sq/LC_MESSAGES
-@dir %%DATADIR%%/locale/sr/LC_MESSAGES
-@dir %%DATADIR%%/locale/sr@Latn/LC_MESSAGES
-@dir %%DATADIR%%/locale/sv/LC_MESSAGES
-@dir %%DATADIR%%/locale/ta/LC_MESSAGES
-@dir %%DATADIR%%/locale/tg/LC_MESSAGES
-@dir %%DATADIR%%/locale/th/LC_MESSAGES
-@dir %%DATADIR%%/locale/tk/LC_MESSAGES
-@dir %%DATADIR%%/locale/tr/LC_MESSAGES
-@dir %%DATADIR%%/locale/uz/LC_MESSAGES
-@dir %%DATADIR%%/locale/vi/LC_MESSAGES
-@dir %%DATADIR%%/locale/wa/LC_MESSAGES
-@dir %%DATADIR%%/locale/zh/LC_MESSAGES
-@dir %%DATADIR%%/locale/zh_CN.GB2312/LC_MESSAGES
-@dir %%DATADIR%%/locale/zh_TW.Big5/LC_MESSAGES
