@@ -1,5 +1,5 @@
 PORTNAME=					fvwm3
-DISTVERSION=				g20251207
+DISTVERSION=				g20251218
 CATEGORIES=					x11-wm
 MASTER_SITES=				GH
 PKGNAMESUFFIX=  			-dev
@@ -11,13 +11,14 @@ COMMENT=        			F? Virtual Window Manager
 WWW=						https://www.fvwm.org/
 
 LICENSE=        			GPLv2
+
 LIB_DEPENDS=                libevent.so:devel/libevent \
-                            libfreetype.so:print/freetype2 \
-                            libfontconfig.so:x11-fonts/fontconfig \
+							libfreetype.so:print/freetype2 \
+							libfontconfig.so:x11-fonts/fontconfig \
 							libxkbcommon.so:x11/libxkbcommon
 
 USES=						meson compiler:c11 cpe localbase:ldflags \
-                            pkgconfig python xorg gl readline perl5
+							pkgconfig python xorg gl readline perl5
 #							shebangfix
 
 CPE_VENDOR=     			fvwm
@@ -25,7 +26,7 @@ CPE_PRODUCT=    			fvwm
 USE_GITHUB=					nodefault
 GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
-GH_TAGNAME=					de93b7dfe4140ff06f62911de9b75b6b0fb6baae
+GH_TAGNAME=					a8d2bfbff0033b6f36f204d1d81a3f00c98a79ea
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
@@ -40,18 +41,18 @@ CONFLICTS_INSTALL=			fvwm fvwm-2.* fvwm3
 WRKSRC=						${WRKDIR}/fvwm3-${GH_TAGNAME}
 MESON_BUILD_DIR=			_build
 
-OPTIONS_DEFINE=				FONTCONF FRIBIDI GOLANG ICONV MANPAGES NLS \
-							PNG SHAPED SHAREDMEM SVG XCURSOR XDG \
-							XFTTEST XI XPM XSM
-OPTIONS_DEFAULT=			FONTCONF ICONV MANPAGES PNG SHAPED SHAREDMEM SVG \
+OPTIONS_DEFINE=				FRIBIDI GOLANG ICONV MANPAGES NLS \
+							PNG SVG XCURSOR XDG \
+							XI XPM XSM
+OPTIONS_DEFAULT=			ICONV MANPAGES PNG SVG \
 							XCURSOR XDG XFTTEST XI XRENDER XSM
 OPTIONS_SUB=				yes
 
-FONTCONF_DESC=				Try to compile and run a test fontconfig program
+#CAIRO_DESC=					Use Cairo as a librsvg backend
 #FRIBIDI_DESC=
 GOLANG_DESC=				Compilation of modules written in Go (FvwmPrompt)
 MANPAGES_DESC=				Generation of man pages (via mandoc)
-SHAPED_DESC=				shaped window support
+#CAIROSVG_DESC=				Use CairoSVG as a librsvg backend
 SHAREDMEM_DESC=				MIT Shared Memory Extension
 SVG_DESC=					Scalable vector graphics (SVG images) support
 XCURSOR_DESC=				Alpha-blend rendering via xrender
@@ -82,11 +83,6 @@ NLS_MESON_ENABLE=			nls
 PNG_LIB_DEPENDS=			libpng.so:graphics/png
 PNG_MESON_ENABLE=			png
 
-#SHAPED_DEPENDS=			#
-SHAPED_MESON_ENABLE=		shape
-
-SHAREDMEM_MESON_ENABLE=		shm
-
 SVG_LIB_DEPENDS=			librsvg-2.so:graphics/librsvg2-rust
 SVG_USES=					gnome
 SVG_USE=					gnome=cairo,glib20,gdkpixbufextra
@@ -97,8 +93,6 @@ XCURSOR_MESON_ENABLE=		xrender
 
 # py-xdg fails with python3.9 which is why python 3.7-3.8 was in Uses
 XDG_RUN_DEPENDS=			${PYTHON_SITELIBDIR}/xdg/__init__.py:devel/py-xdg@${PY_FLAVOR}
-
-XFTTEST_MESON_ENABLE=		xfttest
 
 XI_USE=						xorg=xi xext
 XI_MESON_ENABLE=			xi
@@ -144,7 +138,7 @@ XSM_MESON_ENABLE=			sm
 #.if ${PORT_OPTIONS:MNLS}
 
 post-stage-NLS-on:
-	@${MKDIR} ${STAGEDIR}${LOCALBASE}/share/fvwm3 
+	@${MKDIR} ${STAGEDIR}${LOCALBASE}/share/fvwm3
 	@${MV} ${STAGEDIR}${LOCALBASE}/share/locale/ \
 	${STAGEDIR}${LOCALBASE}/share/fvwm3/
 
