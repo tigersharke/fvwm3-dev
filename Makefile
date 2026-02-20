@@ -1,5 +1,5 @@
 PORTNAME=					fvwm3
-DISTVERSION=				g20251218
+DISTVERSION=				g20260203
 CATEGORIES=					x11-wm
 MASTER_SITES=				GH
 PKGNAMESUFFIX=  			-dev
@@ -18,34 +18,41 @@ LIB_DEPENDS=                libevent.so:devel/libevent \
 							libxkbcommon.so:x11/libxkbcommon
 
 USES=						meson compiler:c11 cpe localbase:ldflags \
-							pkgconfig python xorg gl readline perl5
+							pkgconfig python xorg gl readline perl5 \
+							shebangfix
+#USES=						meson compiler:gcc-c++11-lib cpe localbase:ldflags \
+#							pkgconfig python xorg gl readline perl5
 #							shebangfix
+
 
 CPE_VENDOR=     			fvwm
 CPE_PRODUCT=    			fvwm
 USE_GITHUB=					nodefault
 GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
-GH_TAGNAME=					a8d2bfbff0033b6f36f204d1d81a3f00c98a79ea
+GH_TAGNAME=					55090254ce818918411d843173087d0ffba60092
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
-USE_XORG=       			ice x11 xext xft xrandr xrender xt xtrans
+USE_XORG=       			ice sm x11 xext xft xrandr xrender xt xtrans
+#USE_XORG=       			ice x11 xext xft xrandr xrender xt xtrans
 
-MESON_ARGS=                 --auto-features=disabled \
-							-Dpython=${PYTHON_CMD}
-# --buildtype=minsize
+MESON_ARGS=					\
+							-Dpython=${PYTHON_CMD} \
+							--auto-features=disabled \
+							--buildtype=minsize
 
 CONFLICTS_INSTALL=			fvwm fvwm-2.* fvwm3
 
 WRKSRC=						${WRKDIR}/fvwm3-${GH_TAGNAME}
 MESON_BUILD_DIR=			_build
 
+# Removed XI option from both
 OPTIONS_DEFINE=				FRIBIDI GOLANG ICONV MANPAGES NLS \
 							PNG SVG XCURSOR XDG \
-							XI XPM XSM
+							XPM XSM
 OPTIONS_DEFAULT=			ICONV MANPAGES PNG SVG \
-							XCURSOR XDG XFTTEST XI XRENDER XSM
+							XCURSOR XDG XFTTEST XRENDER XSM
 OPTIONS_SUB=				yes
 
 #CAIRO_DESC=					Use Cairo as a librsvg backend
@@ -61,50 +68,52 @@ XFTTEST_DESC=				Try to compile and run a test Xft program
 XI_DESC=					X Input extension library support
 #XRENDER_DESC=				Alpha-blend rendering
 XSM_DESC=					X11 session management support
+# MESON_ENABLED (port) vs MESON_ENABLE (mine)
 
-FONTCONF_MESON_ENABLE=		fontconfigtest
+FONTCONF_MESON_ENABLED=		fontconfigtest
 
 FRIBIDI_LIB_DEPENDS=		libfribidi.so:converters/fribidi
-FRIBIDI_MESON_ENABLE=		bidi
+FRIBIDI_MESON_ENABLED=		bidi
 
 # Does this need something more for it to build the module FvwmPrompt properly?
 GOLANG_USES=				go:no_targets
-GOLANG_MESON_ENABLE=		golang
+GOLANG_MESON_ENABLED=		golang
 
 ICONV_USES=					iconv
-ICONV_MESON_ENABLE=			iconv
+ICONV_MESON_ENABLED=			iconv
 
 MANPAGES_BUILD_DEPENDS=		asciidoctor:textproc/rubygem-asciidoctor
 MANPAGES_MESON_TRUE=		mandoc
 
 NLS_USES=					gettext-runtime
-NLS_MESON_ENABLE=			nls
+NLS_MESON_ENABLED=			nls
 
 PNG_LIB_DEPENDS=			libpng.so:graphics/png
-PNG_MESON_ENABLE=			png
+PNG_MESON_ENABLED=			png
 
 SVG_LIB_DEPENDS=			librsvg-2.so:graphics/librsvg2-rust
 SVG_USES=					gnome
 SVG_USE=					gnome=cairo,glib20,gdkpixbufextra
-SVG_MESON_ENABLE=  			cairo-svg
+SVG_MESON_ENABLED=  			cairo-svg
 
-XCURSOR_USE=				xorg=xrender,xcursor
-XCURSOR_MESON_ENABLE=		xrender
+XCURSOR_USE=				XORG=xrender,xcursor
+XCURSOR_MESON_ENABLED=		xrender xcursor xfixes
 
 # py-xdg fails with python3.9 which is why python 3.7-3.8 was in Uses
 XDG_RUN_DEPENDS=			${PYTHON_SITELIBDIR}/xdg/__init__.py:devel/py-xdg@${PY_FLAVOR}
 
-XI_USE=						xorg=xi xext
-XI_MESON_ENABLE=			xi
+#XI_USE=						xorg=xi xext
+#XI_MESON_ENABLED=			xi
 
-XPM_USE=					xorg=xpm
+XPM_USE=					XORG=xpm
+XPM_MESON_ENABLED=			xpm
 #XPM_MESON_OFF=				xpm
 
 #XRENDER_USE=				xorg=xrender
 #XRENDER_MESON_ENABLE=		xrender
 
-XSM_USE=					xorg=sm
-XSM_MESON_ENABLE=			sm
+XSM_USE=					XORG=sm
+XSM_MESON_ENABLED=			sm
 
 .include <bsd.port.options.mk>
 
