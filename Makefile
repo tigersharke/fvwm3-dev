@@ -1,5 +1,5 @@
 PORTNAME=					fvwm3
-DISTVERSION=				g20260203
+DISTVERSION=				g20260221
 CATEGORIES=					x11-wm
 MASTER_SITES=				GH
 PKGNAMESUFFIX=  			-dev
@@ -20,17 +20,13 @@ LIB_DEPENDS=                libevent.so:devel/libevent \
 USES=						meson compiler:c11 cpe localbase:ldflags \
 							pkgconfig python xorg gl readline perl5 \
 							shebangfix
-#USES=						meson compiler:gcc-c++11-lib cpe localbase:ldflags \
-#							pkgconfig python xorg gl readline perl5
-#							shebangfix
-
 
 CPE_VENDOR=     			fvwm
 CPE_PRODUCT=    			fvwm
 USE_GITHUB=					nodefault
 GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
-GH_TAGNAME=					55090254ce818918411d843173087d0ffba60092
+GH_TAGNAME=					a8a1e561ed5baa1c360a493e728117e667b9fbbf
 
 USE_GL=						gl glu
 USE_LDCONFIG=				yes
@@ -48,10 +44,10 @@ WRKSRC=						${WRKDIR}/fvwm3-${GH_TAGNAME}
 MESON_BUILD_DIR=			_build
 
 # Removed XI option from both
-OPTIONS_DEFINE=				FRIBIDI GOLANG ICONV MANPAGES NLS \
+OPTIONS_DEFINE=				FRIBIDI GOLANG MANPAGES NLS \
 							PNG SVG XCURSOR XDG \
 							XPM XSM
-OPTIONS_DEFAULT=			ICONV MANPAGES PNG SVG \
+OPTIONS_DEFAULT=			MANPAGES PNG SVG \
 							XCURSOR XDG XFTTEST XRENDER XSM
 OPTIONS_SUB=				yes
 
@@ -78,9 +74,6 @@ FRIBIDI_MESON_ENABLED=		bidi
 # Does this need something more for it to build the module FvwmPrompt properly?
 GOLANG_USES=				go:no_targets
 GOLANG_MESON_ENABLED=		golang
-
-ICONV_USES=					iconv
-ICONV_MESON_ENABLED=			iconv
 
 MANPAGES_BUILD_DEPENDS=		asciidoctor:textproc/rubygem-asciidoctor
 MANPAGES_MESON_TRUE=		mandoc

@@ -11,9 +11,6 @@ libexec/fvwm3/1.1.5/FvwmAnimate
 libexec/fvwm3/1.1.5/FvwmAuto
 libexec/fvwm3/1.1.5/FvwmBacker
 libexec/fvwm3/1.1.5/FvwmButtons
-%%GOLANG%%libexec/fvwm3/1.1.5/FvwmCommandS 
-%%NO_GOLANG%%libexec/fvwm3/1.1.5/FvwmConsoleC
-%%NO_GOLANG%%libexec/fvwm3/1.1.5/FvwmConsole
 libexec/fvwm3/1.1.5/FvwmEvent
 libexec/fvwm3/1.1.5/FvwmForm
 libexec/fvwm3/1.1.5/FvwmIconMan
