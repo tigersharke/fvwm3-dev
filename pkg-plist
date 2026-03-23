@@ -100,6 +100,7 @@ libexec/fvwm3/1.1.5/FvwmTalk
 %%NLS%%%%DATADIR%%/locale/de/LC_MESSAGES/fvwm3.mo
 %%NLS%%%%DATADIR%%/locale/es/LC_MESSAGES/fvwm3.mo
 %%NLS%%%%DATADIR%%/locale/fr/LC_MESSAGES/fvwm3.mo
+%%NLS%%%%DATADIR%%/locale/ka/LC_MESSAGES/fvwm3.mo
 %%NLS%%%%DATADIR%%/locale/ru/LC_MESSAGES/fvwm3.mo
 %%NLS%%%%DATADIR%%/locale/sv_SE/LC_MESSAGES/fvwm3.mo
 %%NLS%%%%DATADIR%%/locale/uk/LC_MESSAGES/fvwm3.mo
