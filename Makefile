@@ -12,14 +12,16 @@ WWW=						https://www.fvwm.org/
 
 LICENSE=        			GPLv2
 
-LIB_DEPENDS=                libevent.so:devel/libevent \
-							libfreetype.so:print/freetype2 \
-							libfontconfig.so:x11-fonts/fontconfig \
-							libxkbcommon.so:x11/libxkbcommon
+LIB_DEPENDS=				libfontconfig.so:x11-fonts/fontconfig \
+			                libevent.so:devel/libevent
+#							libfreetype.so:print/freetype2 \
+#							libfontconfig.so:x11-fonts/fontconfig \
+#							libxkbcommon.so:x11/libxkbcommon
 
-USES=						meson compiler:c11 cpe localbase:ldflags \
-							pkgconfig python xorg gl readline perl5 \
+USES=						pkgconfig python xorg perl5 \
+							meson compiler:c11 cpe localbase:ldflags \
 							shebangfix
+#							pkgconfig python xorg gl readline perl5 \
 
 CPE_VENDOR=     			fvwm
 CPE_PRODUCT=    			fvwm
@@ -28,9 +30,9 @@ GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
 GH_TAGNAME=					3abfb28bacf38d34feb3038a7ed6349e575ba5fa
 
-USE_GL=						gl glu
+#USE_GL=						gl glu
 USE_LDCONFIG=				yes
-USE_XORG=       			ice sm x11 xext xft xrandr xrender xt xtrans
+USE_XORG=       			ice sm x11 xext xft xrandr xrender xt xtrans xfixes
 #USE_XORG=       			ice x11 xext xft xrandr xrender xt xtrans
 
 MESON_ARGS=					\
@@ -59,7 +61,7 @@ MANPAGES_DESC=				Generation of man pages (via mandoc)
 SHAREDMEM_DESC=				MIT Shared Memory Extension
 SVG_DESC=					Scalable vector graphics (SVG images) support
 XCURSOR_DESC=				Alpha-blend rendering via xrender
-XDG_DESC=					Add py-xdg dependency for menu generator
+XDG_DESC=					Add py-pyxdg dependency for menu generator
 XFTTEST_DESC=				Try to compile and run a test Xft program
 XI_DESC=					X Input extension library support
 #XRENDER_DESC=				Alpha-blend rendering
@@ -81,19 +83,20 @@ MANPAGES_MESON_TRUE=		mandoc
 NLS_USES=					gettext-runtime
 NLS_MESON_ENABLED=			nls
 
-PNG_LIB_DEPENDS=			libpng.so:graphics/png
+PNG_LIB_DEPENDS=			libpng16.so:graphics/png
 PNG_MESON_ENABLED=			png
 
-SVG_LIB_DEPENDS=			librsvg-2.so:graphics/librsvg2-rust
+#SVG_LIB_DEPENDS=			librsvg-2.so:graphics/librsvg2-rust
 SVG_USES=					gnome
-SVG_USE=					gnome=cairo,glib20,gdkpixbufextra
+#SVG_USE=					gnome=cairo
+#,glib20,gdkpixbufextra
 SVG_MESON_ENABLED=  			cairo-svg
 
 XCURSOR_USE=				XORG=xrender,xcursor
 XCURSOR_MESON_ENABLED=		xrender xcursor xfixes
 
 # py-xdg fails with python3.9 which is why python 3.7-3.8 was in Uses
-XDG_RUN_DEPENDS=			${PYTHON_SITELIBDIR}/xdg/__init__.py:devel/py-xdg@${PY_FLAVOR}
+XDG_RUN_DEPENDS=			${PYTHON_SITELIBDIR}/xdg/__init__.py:devel/py-pyxdg@${PY_FLAVOR}
 
 #XI_USE=						xorg=xi xext
 #XI_MESON_ENABLED=			xi
@@ -183,5 +186,20 @@ post-stage-MMANPAGES-on:
 # --pdfdir=DIR            pdf documentation [DOCDIR]
 # --psdir=DIR             ps documentation [DOCDIR]
 # --enable-mandoc         enable generation of man pages
+
+#Warning: you might not need LIB_DEPENDS on libevent.so
+#Warning: you might not need LIB_DEPENDS on libfreetype.so
+#Warning: you might not need LIB_DEPENDS on libxkbcommon.so
+#Warning: you might not need LIB_DEPENDS on libpng.so
+#Warning: you might not need LIB_DEPENDS on librsvg-2.so
+#Warning: you might not need LIB_DEPENDS on libGL.so
+#Warning: you might not need LIB_DEPENDS on libGLU.so
+#Warning: you might not need LIB_DEPENDS on libreadline.so.8
+#Warning: you might not need LIB_DEPENDS on libcairo.so
+#Warning: you might not need LIB_DEPENDS on libgdk_pixbuf-2.0.so
+#Warning: you might not need LIB_DEPENDS on libglib-2.0.so
+#Warning: you need LIB_DEPENDS+=libpng16.so:graphics/png
+#Warning: you need LIB_DEPENDS+=libevent-2.1.so:devel/libevent
+#Warning: you might not need LIB_DEPENDS on libcairo.so
 
 .include <bsd.port.mk>
