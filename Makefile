@@ -1,5 +1,5 @@
 PORTNAME=					fvwm3
-DISTVERSION=				g20260316
+DISTVERSION=				g20260518
 CATEGORIES=					x11-wm
 MASTER_SITES=				GH
 PKGNAMESUFFIX=  			-dev
@@ -14,26 +14,20 @@ LICENSE=        			GPLv2
 
 LIB_DEPENDS=				libfontconfig.so:x11-fonts/fontconfig \
 			                libevent.so:devel/libevent
-#							libfreetype.so:print/freetype2 \
-#							libfontconfig.so:x11-fonts/fontconfig \
-#							libxkbcommon.so:x11/libxkbcommon
 
 USES=						pkgconfig python xorg perl5 \
 							meson compiler:c11 cpe localbase:ldflags \
 							shebangfix
-#							pkgconfig python xorg gl readline perl5 \
 
 CPE_VENDOR=     			fvwm
 CPE_PRODUCT=    			fvwm
-USE_GITHUB=					nodefault
+USE_GITHUB=					yes
 GH_ACCOUNT=					fvwmorg
 GH_PROJECT=					fvwm3
-GH_TAGNAME=					3abfb28bacf38d34feb3038a7ed6349e575ba5fa
+GH_TAGNAME=					73f2c245b0a3a27cf7879887f92c0e63d8e2f6b5
 
-#USE_GL=						gl glu
 USE_LDCONFIG=				yes
 USE_XORG=       			ice sm x11 xext xft xrandr xrender xt xtrans xfixes
-#USE_XORG=       			ice x11 xext xft xrandr xrender xt xtrans
 
 MESON_ARGS=					\
 							-Dpython=${PYTHON_CMD} \
@@ -42,7 +36,6 @@ MESON_ARGS=					\
 
 CONFLICTS_INSTALL=			fvwm fvwm-2.* fvwm3
 
-WRKSRC=						${WRKDIR}/fvwm3-${GH_TAGNAME}
 MESON_BUILD_DIR=			_build
 
 # Removed XI option from both
@@ -53,9 +46,9 @@ OPTIONS_DEFAULT=			MANPAGES PNG SVG \
 							XCURSOR XDG XFTTEST XRENDER XSM
 OPTIONS_SUB=				yes
 
-#CAIRO_DESC=					Use Cairo as a librsvg backend
+#CAIRO_DESC=				Use Cairo as a librsvg backend
 #FRIBIDI_DESC=
-GOLANG_DESC=				Compilation of modules written in Go (FvwmPrompt)
+GOLANG_DESC=				Compilation of modules written in Go (FvwmPrompt) -broken here-
 MANPAGES_DESC=				Generation of man pages (via mandoc)
 #CAIROSVG_DESC=				Use CairoSVG as a librsvg backend
 SHAREDMEM_DESC=				MIT Shared Memory Extension
@@ -74,6 +67,7 @@ FRIBIDI_LIB_DEPENDS=		libfribidi.so:converters/fribidi
 FRIBIDI_MESON_ENABLED=		bidi
 
 # Does this need something more for it to build the module FvwmPrompt properly?
+# >> Needs another git repo drawn in I believe
 GOLANG_USES=				go:no_targets
 GOLANG_MESON_ENABLED=		golang
 
@@ -112,18 +106,6 @@ XSM_USE=					XORG=sm
 XSM_MESON_ENABLED=			sm
 
 .include <bsd.port.options.mk>
-
-# Is this needed?
-#
-# package fvwm3: no Go files in
-# /usr/home/tigersharke/Ported_Software/x11-wm/fvwm3-dev/work/src/fvwm3
-# go/x11-wm_fvwm3-dev/fvwm3-4f1dced4820c670fb3a8f2c4a836159be97f8e0b/
-#	g20220919.mod
-#.if ${PORT_OPTIONS:MGOLANG}
-#	GO_MODULE golang.org/x/tools
-#	GO_MODULE github.com/fvwmorg/FvwmPrompt
-#	GO_TARGET ${WRKSRC}/bin/FvwmPrompt/go.mod
-#.endif
 
 # This needs a better method if available.
 #post-patch:
@@ -186,20 +168,5 @@ post-stage-MMANPAGES-on:
 # --pdfdir=DIR            pdf documentation [DOCDIR]
 # --psdir=DIR             ps documentation [DOCDIR]
 # --enable-mandoc         enable generation of man pages
-
-#Warning: you might not need LIB_DEPENDS on libevent.so
-#Warning: you might not need LIB_DEPENDS on libfreetype.so
-#Warning: you might not need LIB_DEPENDS on libxkbcommon.so
-#Warning: you might not need LIB_DEPENDS on libpng.so
-#Warning: you might not need LIB_DEPENDS on librsvg-2.so
-#Warning: you might not need LIB_DEPENDS on libGL.so
-#Warning: you might not need LIB_DEPENDS on libGLU.so
-#Warning: you might not need LIB_DEPENDS on libreadline.so.8
-#Warning: you might not need LIB_DEPENDS on libcairo.so
-#Warning: you might not need LIB_DEPENDS on libgdk_pixbuf-2.0.so
-#Warning: you might not need LIB_DEPENDS on libglib-2.0.so
-#Warning: you need LIB_DEPENDS+=libpng16.so:graphics/png
-#Warning: you need LIB_DEPENDS+=libevent-2.1.so:devel/libevent
-#Warning: you might not need LIB_DEPENDS on libcairo.so
 
 .include <bsd.port.mk>
