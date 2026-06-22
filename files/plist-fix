@@ -16,6 +16,6 @@ sed \
 -e 's#\%\%MANPAGES\%\%share\/man\/man1\/FvwmConsole#\%\%GOLANG\%\%\%\%MANPAGES\%\%share\/man\/man1\/FvwmConsole#g' \
 -e 's#^share\/man\/man1#\%\%MANPAGES\%\%share\/man\/man1#g' \
 -e 's#^\%\%DATADIR\%\%/locale#\%\%NLS\%\%\%\%DATADIR\%\%/locale#g' \
--e 's#^share\/locale#\%\%NLS\%\%\%\%DATADIR\%\%/locale#g' \
 > /var/tmp/fvwm-dev_pkg-plist-fixed
 cp /var/tmp/fvwm-dev_pkg-plist-fixed ../pkg-plist
+#-e 's#^share\/locale#\%\%NLS\%\%\%\%DATADIR\%\%/locale#g' \
